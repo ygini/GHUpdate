@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E173920C1B2B239F00007249 /* GHUpdater.h in Headers */ = {isa = PBXBuildFile; fileRef = E173920A1B2B239F00007249 /* GHUpdater.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E173920D1B2B239F00007249 /* GHUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = E173920B1B2B239F00007249 /* GHUpdater.m */; };
 		E196D0201B2B075700F05562 /* GHUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = E196D01F1B2B075700F05562 /* GHUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E196D0261B2B075700F05562 /* GHUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E196D01A1B2B075700F05562 /* GHUpdate.framework */; };
 		E196D02D1B2B075700F05562 /* GHUpdateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E196D02C1B2B075700F05562 /* GHUpdateTests.m */; };
 		E196D0381B2B077800F05562 /* GHAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = E196D0361B2B077800F05562 /* GHAPI.h */; };
 		E196D0391B2B077800F05562 /* GHAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E196D0371B2B077800F05562 /* GHAPI.m */; };
-		E196D03C1B2B0ECE00F05562 /* GHLatestRelease.h in Headers */ = {isa = PBXBuildFile; fileRef = E196D03A1B2B0ECE00F05562 /* GHLatestRelease.h */; };
+		E196D03C1B2B0ECE00F05562 /* GHLatestRelease.h in Headers */ = {isa = PBXBuildFile; fileRef = E196D03A1B2B0ECE00F05562 /* GHLatestRelease.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E196D03D1B2B0ECE00F05562 /* GHLatestRelease.m in Sources */ = {isa = PBXBuildFile; fileRef = E196D03B1B2B0ECE00F05562 /* GHLatestRelease.m */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E173920A1B2B239F00007249 /* GHUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHUpdater.h; sourceTree = "<group>"; };
+		E173920B1B2B239F00007249 /* GHUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHUpdater.m; sourceTree = "<group>"; };
 		E196D01A1B2B075700F05562 /* GHUpdate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHUpdate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E196D01E1B2B075700F05562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E196D01F1B2B075700F05562 /* GHUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHUpdate.h; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				E196D0371B2B077800F05562 /* GHAPI.m */,
 				E196D03A1B2B0ECE00F05562 /* GHLatestRelease.h */,
 				E196D03B1B2B0ECE00F05562 /* GHLatestRelease.m */,
+				E173920A1B2B239F00007249 /* GHUpdater.h */,
+				E173920B1B2B239F00007249 /* GHUpdater.m */,
 			);
 			path = GHUpdate;
 			sourceTree = "<group>";
@@ -122,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E196D03C1B2B0ECE00F05562 /* GHLatestRelease.h in Headers */,
+				E173920C1B2B239F00007249 /* GHUpdater.h in Headers */,
 				E196D0381B2B077800F05562 /* GHAPI.h in Headers */,
 				E196D0201B2B075700F05562 /* GHUpdate.h in Headers */,
 			);
@@ -223,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E173920D1B2B239F00007249 /* GHUpdater.m in Sources */,
 				E196D0391B2B077800F05562 /* GHAPI.m in Sources */,
 				E196D03D1B2B0ECE00F05562 /* GHLatestRelease.m in Sources */,
 			);
@@ -337,11 +345,10 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "@loader_path/../Frameworks";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = GHUpdate/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -355,11 +362,10 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "@loader_path/../Frameworks";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = GHUpdate/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -417,6 +423,7 @@
 				E196D0321B2B075700F05562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E196D0331B2B075700F05562 /* Build configuration list for PBXNativeTarget "GHUpdateTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +432,7 @@
 				E196D0351B2B075700F05562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

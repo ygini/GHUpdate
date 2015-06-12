@@ -15,7 +15,7 @@
 
 @end
 
-static NSString *BaseURLString = @"https://api.github.com/";
+static NSString *BaseURLString = @"https://api.github.com";
 
 @implementation GHAPI
 

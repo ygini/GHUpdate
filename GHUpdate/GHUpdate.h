@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char GHUpdateVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <GHUpdate/PublicHeader.h>
 
-
+#import <GHUpdate/GHUpdater.h>

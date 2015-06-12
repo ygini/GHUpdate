@@ -10,7 +10,13 @@
 
 @interface GHLatestRelease : NSObject
 
+@property (readonly) NSString *desc;
+@property (readonly) NSString *version;
+@property (readonly) NSURL *mainAssetURL;
+@property (readonly) NSURL *releaseURL;
+
 + (instancetype)sharedInstance;
-- (void)updateInfos:(void(^)(NSError *error))completionHandler;
+- (void)updateInfos:(void(^)(GHLatestRelease *release, NSError *error))completionHandler;
+- (void)updateInfosFromRepos:(NSString*)repos by:(NSString*)owner completion:(void(^)(GHLatestRelease *release, NSError *error))completionHandler;
 
 @end
