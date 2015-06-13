@@ -16,16 +16,15 @@
 
 
 + (void)checkAndUpdate {
-    NSDictionary *appInfos = [[NSBundle mainBundle] infoDictionary];
-    
-    NSString *repos = [appInfos objectForKey:@"GHUpdateRepos"];
-    NSString *owner = [appInfos objectForKey:@"GHUpdateOwner"];
-    NSString *version = [appInfos objectForKey:@"CFBundleShortVersionString"];
-    
-    [self checkAndUpdateFromRepos:repos by:owner withCurrentVersion:version];
+    [self checkAndUpdateWithBundleInfo:[[NSBundle mainBundle] infoDictionary]];
 }
 
-+ (void)checkAndUpdateFromRepos:(NSString*)repos by:(NSString*)owner withCurrentVersion:(NSString*)currentVerion {
++ (void)checkAndUpdateWithBundleInfo:(NSDictionary*)bundleInfos {
+    
+    NSString *repos = [bundleInfos objectForKey:@"GHUpdateRepos"];
+    NSString *owner = [bundleInfos objectForKey:@"GHUpdateOwner"];
+    NSString *currentVerion = [bundleInfos objectForKey:@"CFBundleShortVersionString"];
+    
     [[GHLatestRelease sharedInstance] updateInfosFromRepos:repos
                                                         by:owner
                                                 completion:^(GHLatestRelease *release, NSError *error) {
@@ -34,7 +33,7 @@
                                                         targetVersion = [targetVersion stringByReplacingCharactersInRange:(NSRange){0,1} withString:@""];
                                                     }
                                                     
-                                                    if (![currentVerion isEqualToString:targetVersion]) {
+                                                    if ([self compareVersion:currentVerion with:targetVersion] == NSOrderedAscending) {
                                                         
                                                         NSAlert * updateMessage = [NSAlert new];
                                                         
@@ -56,4 +55,42 @@
                                                     
                                                 }];
 }
+
+
++ (NSComparisonResult)compareVersion:(NSString*)localVersion with:(NSString*)remoteVersion {
+    
+    NSMutableArray *localComponents = [[localVersion componentsSeparatedByString:@"."] mutableCopy];
+    NSMutableArray *remoteComponents = [[remoteVersion componentsSeparatedByString:@"."] mutableCopy];
+    
+    NSUInteger numberOfLocalComponents = [localComponents count];
+    NSUInteger numberOfRemoteComponents = [remoteComponents count];
+    
+    if (numberOfLocalComponents > numberOfRemoteComponents) {
+        NSUInteger componentsToAdd = numberOfLocalComponents - numberOfRemoteComponents;
+        for (int i = 0; i < componentsToAdd; i++) {
+            [remoteComponents addObject:@"0"];
+            numberOfRemoteComponents++;
+        }
+    } else if (numberOfLocalComponents < numberOfRemoteComponents) {
+        NSUInteger componentsToAdd = numberOfRemoteComponents - numberOfLocalComponents;
+        for (int i = 0; i < componentsToAdd; i++) {
+            [localComponents addObject:@"0"];
+            numberOfLocalComponents++;
+        }
+    }
+    
+    for (int i = 0; i < numberOfLocalComponents; i++) {
+        NSString *localDigit = [localComponents objectAtIndex:i];
+        NSString *remoteDigit = [remoteComponents objectAtIndex:i];
+        
+        NSComparisonResult digitOrder = [localDigit compare:remoteDigit];
+        
+        if (digitOrder != NSOrderedSame) {
+            return digitOrder;
+        }
+    }
+    
+    return NSOrderedSame;
+}
+
 @end

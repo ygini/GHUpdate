@@ -11,6 +11,6 @@
 @interface GHUpdater : NSObject
 
 + (void)checkAndUpdate;
-+ (void)checkAndUpdateFromRepos:(NSString*)repos by:(NSString*)owner withCurrentVersion:(NSString*)currentVerion;
++ (void)checkAndUpdateWithBundleInfo:(NSDictionary*)bundleInfos;
 
 @end
