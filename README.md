@@ -1,8 +1,6 @@
 # GHUpdate
 This framework is made to manage update process of OS X application via Github release API.
 
-Feel free to contribute!
-
 #Limitations
 
 At this time it only support release, not prerelease.
@@ -36,3 +34,9 @@ Your info must have GHUpdateOwner, GHUpdateRepos and CFBundleShortVersionString 
 The CFBundleShortVersionString will be compared to release tag (leading 'v' char will be striped).
 
 This scenario is useful when you want to provide update mechanism to bundle like prefpane.
+
+#Contribution
+
+Feel free to contribute!
+
+But please, avoid as much as possible adding ressources like xib, image, alternate binaries, etc. This will add too much complexity with bundle based scenario.
